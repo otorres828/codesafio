@@ -2,13 +2,6 @@ const express = require("express");
 const jwt = require('jsonwebtoken');
 const secretKey = 'KGGK>HKHVHJVKBKJKJBKBKHKBMKHB';
 
-// middleware del usuario_id
-const usuario_id = (req) => {
-  const token = req.headers['x-access-token'] || req.headers['authorization'];
-  const decoded = jwt.verify(token, secretKey);
-  return decoded.id;
-};
-
 
 const verify = express.Router();
 
@@ -40,8 +33,7 @@ verify.use((req, res, next) => {
 // exportar el módulo verift y el middleware usuario_id
 
 module.exports = {
-  verify,
-  usuario_id
+  verify
 };
 
 

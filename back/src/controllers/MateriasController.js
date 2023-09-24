@@ -1,4 +1,5 @@
 const db = require('../config/config.js');
+// const usuario_id = require('../middleware/Usuario_id');
 
 // Obtener todas las materias
 const obtenerTodasLasMaterias = (callback) => {

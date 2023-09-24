@@ -1,4 +1,5 @@
 const express = require('express');
+// const usuario_id = require('../middleware/Usuario_id');
 
 // Controlador para crear usuarios
 const create_users = (req, res) => {

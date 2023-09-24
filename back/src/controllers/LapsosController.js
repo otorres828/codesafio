@@ -1,11 +1,11 @@
-const usuario_id = require('../middleware/Usuario_id');
+// const usuario_id = require('../middleware/Usuario_id');
 const db = require('./../config/config');
    
 // Controlador para crear lapsos
 const crear_lapsos = (req, res) => {
     const { nombre_lapso } = req.body;
     
-    const usuario_id=usuario_id(req);
+    // const usuario_id=usuario_id(req);
 
     // Verifica si el campo "nombre_lapso" está presente en la solicitud
     if (!nombre_lapso) {
