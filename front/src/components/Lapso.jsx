@@ -30,7 +30,7 @@ function Lapso() {
     // .then((response) => {
     //   obtener_lapsos()
     // });
-    navigate('./editar/lapso/',lapso_id)
+    // navigate('./editar/lapso/',lapso_id)
   }
 
   function actualizar(){
@@ -41,10 +41,6 @@ function Lapso() {
     });
   }
 
-
-  function handleClose(){
-      setOpen(false);
-  }
 
   useEffect(()=>{
     // obtener_lapsos();
