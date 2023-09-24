@@ -6,7 +6,7 @@ const IP = require('ip');
 let app = express();
 let server = http.createServer(app); 
 
-
+const routerAutenticacion = require('./routes/autenticacion.routes.js')
 const routerMaterias = require('./routes/materias.routes.js')
 
 app.use(cors());
@@ -15,6 +15,7 @@ app.use(express.json());
 
 /*------------------------RUTAS---------------------- */
 app.use(routerMaterias);
+app.use(routerAutenticacion);
 
 /*------------------------FIN RUTAS---------------------- */
 
