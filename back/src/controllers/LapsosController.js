@@ -1,6 +1,5 @@
+const usuario_id = require('../middleware/Usuario_id');
 const db = require('./../config/config');
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'KGGK>HKHVHJVKBKJKJBKBKHKBMKHB'
    
 // Controlador para crear lapsos
 const crear_lapsos = (req, res) => {
@@ -27,13 +26,6 @@ const crear_lapsos = (req, res) => {
     });
 };
 
-function usuario_id(req){   
-    const token = req.headers.authorization.split(' ')[1];
-    //decodificamos el token
-    const decodedToken = jwt.verify(token,SECRET_KEY);
-    //obtenemos el id del administrador logueado
-    return decodedToken.id;
-}
 
 module.exports = {
     crear_lapsos
