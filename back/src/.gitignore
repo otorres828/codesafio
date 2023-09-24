@@ -1,3 +1,2 @@
 .env
-
-config/database.sqlite
+/config/database.sqlite
