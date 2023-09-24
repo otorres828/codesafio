@@ -24,16 +24,12 @@ function Panel() {
           <Dropdown options={options} onSelect={handleOptionSelect} />
         </div>
         <div className="mx-auto container">
-          {selectedOption==='Notificaciones' ?
-            <Notificacion />
-          :
-          <Lapso />
-        }
-        <NavLink to={selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}>
-          <Button>
-          {selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}
-          </Button>
-        </NavLink>
+          {selectedOption==='Notificaciones' ? <Notificacion />:<Lapso />}
+          <NavLink to={selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}>
+            <Button>
+            {selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}
+            </Button>
+          </NavLink>
         </div>
       </div>
     </>
