@@ -7,6 +7,6 @@ const {
 const routerAutenticacion = express.Router();
 
 routerAutenticacion.post('/login', login);
-routerAutenticacion.post('/register', register);
+routerAutenticacion.post('/registrarse', register);
 
 module.exports = routerAutenticacion;

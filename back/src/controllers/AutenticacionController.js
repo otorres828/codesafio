@@ -42,10 +42,9 @@ const login = async (req, res) => {
 // Crear usuario desde el CMS
 const register = async (req, res) => {
     const { nick, clave } = req.body;
-
     try {
         // Verificar si el usuario ya existe
-         db.get('SELECT * FROM usuarios WHERE nick = ?', [nick], async (err, row) => {
+        db.get('SELECT * FROM usuarios WHERE nick = ?', [nick], async (err, row) => {
             if (err) {
               return res.status(400).json({ error: "El usuario ya existe" });
             }
@@ -53,7 +52,6 @@ const register = async (req, res) => {
               return res.status(200).json({ error: 'El nick ya está registrado' });
             }
         })   
-
 
         // Encriptar la clave
         const hashedPassword = await bcrypt.hash(clave, 10);
@@ -63,14 +61,13 @@ const register = async (req, res) => {
   
         db.run(sql, [nick, hashedPassword], async function(err) {
           if (err) {
-            console.error(err);
             return res.sendStatus(500);
           }
           
           res.json({ message: 'Registro exitoso' });
         });
     } catch (error) {
-        console.error("Error al registrar usuario:", error);
+        console.error("Error al registrar usuario");
         res.status(500).json({ error: "Error interno del servidor" });
     }
 };

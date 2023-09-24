@@ -16,7 +16,7 @@ export function Register() {
   const navigate = useNavigate();
   const nickRef = useRef();
   const [nick, setNick] = useState("");
-  const [password, setPassword] = useState("");
+  const [clave, setClave] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const cabecera = {
     Accept: "application/json",
@@ -27,7 +27,7 @@ export function Register() {
   const enviarFormularioRegister = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post("register",{nick,password},{ headers: cabecera }
+      const res = await axios.post("registrarse",{nick,clave},{ headers: cabecera }
       );
     
       if (res.data.error) {;
@@ -71,9 +71,9 @@ export function Register() {
                           onChange={e => setNick(e.target.value)}
                           value={nick}
                           autoComplete="off"/>
-              <Input type="password" label="Password" size="lg"  className="text-gray-400"
-                          onChange={e => setPassword(e.target.value)}
-                          value={password}
+              <Input type="password" label="clave" size="lg"  className="text-gray-400"
+                          onChange={e => setClave(e.target.value)}
+                          value={clave}
                           autoComplete="off"
                           required/>
               
