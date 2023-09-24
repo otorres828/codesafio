@@ -7,6 +7,7 @@ const verify = express.Router();
 
 verify.use((req, res, next) => {
   let token = req.headers['x-access-token'] || req.headers['authorization'];
+  
   if (!token || token == undefined) {
     return res.status(401).json({
       error: "Es necesario el token para acceder a la aplicación"
