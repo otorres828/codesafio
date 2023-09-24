@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3');
 
-const db = new sqlite3.Database('./database.sqlite', (err) => {
+const db = new sqlite3.Database('./src/config/database.sqlite', (err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err.message);
   } else {
@@ -19,7 +19,5 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
-
-
 
 module.exports = db;

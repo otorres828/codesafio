@@ -18,7 +18,7 @@ app.use(routerAutenticacion);
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
-    db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, nickname VARCHAR(255), password VARCHAR(255)');    
+    db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, nickname VARCHAR(255), password VARCHAR(255))');    
 });
 
 // INICIAR SERVIDOR
@@ -27,7 +27,6 @@ server.listen(PORT,"0.0.0.0", () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
     
 });
-
 
 app.get('/', (req, res) => {
     const ipAddress = IP.address();
