@@ -8,13 +8,15 @@ let app = express();
 let server = http.createServer(app); 
 
 const routerAutenticacion = require('./routes/autenticacion.routes.js')
+const routerLapsos = require('./routes/lapsos.routes.js')
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 /*------------------------RUTAS---------------------- */
-app.use(routerAutenticacion);
+app.use(routerAutenticacion); 
+app.use(routerLapsos); 
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
