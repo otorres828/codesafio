@@ -40,10 +40,9 @@ export function Login() {
       if (res.data.error) {;
         enqueueSnackbar(res.data.error, { variant: res.data.error });
       } else {
-        localStorage.setItem("token_biblioteca", res.data.token_biblioteca);
-        localStorage.setItem("permisos", "["+res.data.permisos+"]");
+        localStorage.setItem("token_codesafio", res.data.token_codesafio);
         enqueueSnackbar("Gracias por volver :D ", { variant: "success" });
-        navigate("../panel-control");
+        navigate("../panel");
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
