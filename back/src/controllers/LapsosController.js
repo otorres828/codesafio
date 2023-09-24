@@ -21,11 +21,8 @@ const crear_lapsos = (req, res) => {
       console.error("Error al insertar el lapso:", err.message);
       return res.status(200).json({ error: "Error interno del servidor" });
     }
-
     // Devuelve el ID del lapso recién insertado
-    res
-      .status(201)
-      .json({ id: this.lastID, mensaje: "Lapso creado con éxito" });
+    res.status(200).json({ id: this.lastID, mensaje: "Lapso creado con éxito" });
   });
 };
 
