@@ -63,8 +63,6 @@ export function Register() {
             >
               <Typography variant="h4" color="white" className="px-3">
                   CONTROL DE NOTAS
-                  {process.env.REACT_APP_API_URL}
-
               </Typography>
             </CardHeader>
             <CardBody className="flex flex-col gap-4">
