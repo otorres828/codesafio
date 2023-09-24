@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import axios from '../api/axios'
-import Recordatorio from './Recordatorio'
+import axios from '../../api/axios';
+import Recordatorio from '../../components/Recordatorio'
 
 function Notificacion() {
     const [notificaciones,setNotificaciones]=useState(null)
@@ -21,10 +21,10 @@ function Notificacion() {
   return (
     <>
         <Recordatorio
-            title="Título del recordatorio"
-            subtitle="Subtítulo del recordatorio"
-            text="Este es el texto del recordatorio. Puedes personalizarlo aquí."
-            days="3 días"
+            titulo="Título del recordatorio"
+            materia="Matematicas"
+            fecha="25/01/2024"
+            dias="3 dias"
           />
     </>
   )
