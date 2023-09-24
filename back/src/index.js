@@ -10,6 +10,7 @@ let server = http.createServer(app);
 const routerAutenticacion = require("./routes/autenticacion.routes.js");
 const routerLapsos = require("./routes/lapsos.routes.js");
 const routerMaterias = require("./routes/materias.routes.js");
+const routerRecordatorios = require("./routes/recordatorios.routes.js");
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(routerAutenticacion);
 app.use(routerLapsos);
 app.use(routerMaterias);
+app.use(routerRecordatorios);
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
@@ -55,7 +57,8 @@ db.serialize(() => {
   db.run(
     `CREATE TABLE IF NOT EXISTS recordatorios(
         record_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-        materia_id INTEGER,
+        titulo VARCHAR(255),
+        subtitulo VARCHAR(255),
         fecha_hora DATETIME,
         usuario_id INTEGER,
         FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON UPDATE CASCADE ON DELETE CASCADE);`
