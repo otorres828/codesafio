@@ -33,7 +33,7 @@ const login = async (req, res) => {
     res.status(200).json({ token_codesafio: token});
 };
 
-//crear administrador desde el cms
+//crear usuario desde el cms
 const register = async (req, res) => {
     const {nick,clave}=req.body;
   
@@ -48,7 +48,7 @@ const register = async (req, res) => {
     res.status(200).send({mensaje:'Administrador creado con exito'});
   
     
-  }
+}
 
 
 //compara la clave que viene del usuario con la hasheada en la bdd
@@ -69,4 +69,4 @@ const generateToken = (payload) => {
     return jwt.sign(payload, SECRET_KEY, { expiresIn: '30d' });
 };
   
-module.exports = {login};
+module.exports = {login,register};
