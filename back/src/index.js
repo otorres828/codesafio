@@ -20,7 +20,7 @@ app.use(routerLapsos);
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
-    db.run('CREATE TABLE IF NOT EXISTS usuarios (usuario_id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(255), clave VARCHAR(255))');    
+    db.run('CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(255), clave VARCHAR(255))');    
 
     // Crear la tabla "semestres" para los semestres
     db.run('CREATE TABLE IF NOT EXISTS lapsos (lapso_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre_lapso VARCHAR(255))');

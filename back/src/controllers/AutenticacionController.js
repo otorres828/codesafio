@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'XSFDFSDFSDGKVDFHDFKCDSGFD'
+const SECRET_KEY = 'KGGK>HKHVHJVKBKJKJBKBKHKBMKHB'
 const db = require('./../config/config');
 
 const login = async (req, res) => {
