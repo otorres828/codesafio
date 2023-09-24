@@ -49,14 +49,28 @@ const obtener_materia = (req, res) => {
                 AND lapso_id = ${lapso_id}
                 ORDER BY materia_id DESC`;
 
+                // acumulado de las notas de cada materia
+                const sql2 = `SELECT SUM(nota_obtenida) AS acumulado
+                FROM notas
+                WHERE materia_id = ${materia_id}`;
+
+
+
   db.all(sql, (err, rows) => {
     if (err) {
       console.error("Error al obtener las materias:", err.message);
       return res.status(500).json({ error: "Error interno del servidor" });
+    }else{
+      db.all(sql2, (err, rows2) => {
+        if (err) {
+          console.error("Error al obtener las materias:", err.message);
+          return res.status(500).json({ error: "Error interno del servidor" });
+        }else{
+          // Devolver las materias como respuesta
+        res.status(200).json({ materias: rows, acumulado: rows2 });
+        }
+      });
     }
-
-    // Devolver las materias como respuesta
-    res.status(200).json({ materias: rows });
   });
 };
 

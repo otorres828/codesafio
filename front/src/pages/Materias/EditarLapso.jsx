@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Input, Button, Typography } from "@material-tailwind/react";
 import Logo from "../../components/Logo";
-function CrearNotificacion() {
-
-  const [titulo,setTitulo]=useState('');
-  const [subtitulo,setiSubtulo]=useState('');
-  const [fecha,setFecha]=useState('');
-  
+function EditarLapso() {
   return (
     <>
-    <div className="bg-gray-100 min-h-screen" >
-      <Logo />
-      <div className="bg-gray-100 min-h-screen relative flex flex-col justify-center items-center">
+      <div className="bg-gray-100 min-h-screen relative">
+        <Logo />
         <div className="mx-auto container relative">
           <Typography variant="h5" color="blue-gray" className="mb-2">
-            Crear Notificación
+            Editar Lapso
           </Typography>
 
           <Card>
@@ -51,22 +45,28 @@ function CrearNotificacion() {
                   size="regular"
                 />
               </div>
+              <div className="mb-4">
+                <Input
+                  type="time"
+                  id="hora"
+                  label="Hora"
+                  color="teal"
+                  size="regular"
+                />
+              </div>
             </CardBody>
           </Card>
           {/* Botones */}
           <div className="flex justify-between mt-4 space-x-4">
-          <NavLink to="/panel">
-          <Button color="red"><FontAwesomeIcon icon={faArrowLeft} /></Button>
-          </NavLink>
-            <NavLink to="/crearNotificacion">
-              <Button color="teal"><FontAwesomeIcon icon={faCheck} /></Button>
+            <Button color="red"><FontAwesomeIcon icon={faArrowLeft} /></Button>
+            <NavLink to="/EditarLapso">
+            <Button color="teal"><FontAwesomeIcon icon={faCheck} /></Button>
             </NavLink>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
 }
 
-export default CrearNotificacion;
+export default EditarLapso;

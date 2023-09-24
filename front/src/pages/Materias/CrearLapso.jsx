@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCheck } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -10,33 +10,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Logo from "../../components/Logo";
-import axios from "../../api/axios";
-import { useSnackbar } from "notistack";
 
 function CrearLapso() {
-  const { enqueueSnackbar } = useSnackbar();
-  const navigate = useNavigate();
-  const [nombre,setNombre]=useState('');
-  const token_codesafio = localStorage.getItem("token_codesafio");
-
-  const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token_codesafio}`,
-  };
-  const crear_lapso=()=>{
-    axios.post('lapsos/crear_lapsos',{nombre_lapso:nombre},{headers:headers}).
-    then((response)=>{
-      if(response.data.mensaje){
-        enqueueSnackbar("Lapso creado con exito", { variant: "success" });
-        setNombre('')
-        navigate("../panel");
-      }else{
-        enqueueSnackbar(response.data.error, { variant: "error" });
-      }
-
-    })
-  }
   return (
     <>
       <div className="bg-gray-100 min-h-screen">
@@ -46,17 +21,18 @@ function CrearLapso() {
             <Typography variant="h5" color="blue-gray" className="mb-2">
               Crear Lapso
             </Typography>
+
             <Card>
               <CardBody>
+                <div className="mb-4">
                   <Input
-                    onChange={(e)=>{setNombre(e.target.value)}}
                     type="text"
                     id="nombre"
                     label="Nombre"
                     color="teal"
                     size="regular"
-                    className="mb-4"
                   />
+                </div>
               </CardBody>
             </Card>
             {/* Botones */}
@@ -66,9 +42,11 @@ function CrearLapso() {
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </Button>
               </NavLink>
-                <Button color="teal" onClick={crear_lapso}>
+              <NavLink to="/CrearLapso">
+                <Button color="teal">
                   <FontAwesomeIcon icon={faCheck} />
                 </Button>
+              </NavLink>
             </div>
           </div>
         </div>

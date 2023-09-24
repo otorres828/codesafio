@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LapsoCard from "../../components/LapsoCard";
 import axios from "../../api/axios";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
 
 function Lapso() {
   const [lapsos, setLapsos] = useState(null);

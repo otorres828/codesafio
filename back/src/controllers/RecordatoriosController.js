@@ -3,7 +3,9 @@ const usuario_id_middleware = require("../middleware/Usuario_id");
 
 // Controlador para crear una nueva materia
 const crear_record = (req, res) => {
-    const { titulo, subtitulo, fecha_hora } = req.body;
+    const { nombre_examen, nota_obtenida, porcentaje_evaluacion } = req.body;
+
+  
 
     console.log(req.body)
   
@@ -14,7 +16,6 @@ const crear_record = (req, res) => {
       return res.status(400).json({ error: "El titulo y la fecha es requerido" });
     }
   
-    // Consulta SQL para insertar la nueva materia
     const sql =
       `INSERT INTO recordatorios(
         titulo, subtitulo, fecha_hora, usuario_id) VALUES (?, ?, ?, ?)`;
@@ -23,11 +24,10 @@ const crear_record = (req, res) => {
       [titulo, subtitulo, fecha_hora, usuario_id],
       function (err) {
         if (err) {
-          console.error("Error al insertar la materia:", err.message);
+          console.error("Error al insertar el recordatorio:", err.message);
           return res.status(500).json({ error: "Error interno del servidor" });
         }
   
-        // Devuelve el ID de la materia recién insertada
         res
           .status(201)
           .json({ id: this.lastID, mensaje: "Recordatorio creado con éxito" });
@@ -52,7 +52,6 @@ const obtener_record = (req, res) => {
       return res.status(500).json({ error: "Error interno del servidor" });
     }
 
-    // Devolver las materias como respuesta
     res.status(200).json({ recordatorios: rows });
   });
 };
