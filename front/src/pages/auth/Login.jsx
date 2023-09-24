@@ -71,7 +71,7 @@ export function Login() {
                           onChange={e => setNick(e.target.value)}
                           value={nick}
                           autoComplete="off"/>
-              <Input type="password" label="Password" size="lg"  className="text-gray-400"
+              <Input type="password" label="clave" size="lg"  className="text-gray-400"
                           onChange={e => setPassword(e.target.value)}
                           value={password}
                           autoComplete="off"

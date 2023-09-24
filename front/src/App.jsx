@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { RedirectLogin, RedirectPanel } from "./components/ProtectedRoute.jsx";
 import { Login,Register } from "./pages/auth";
 import  Panel  from "./pages/Panel";
-import CrearNotificacion from "./pages/Notificaciones/CrearNotificacion.jsx";
+import CrearRecordatorio from "./pages/Notificaciones/CrearRecordatorio.jsx";
 import EditarNotificacion from "./pages/Notificaciones/EditarNotificacion.jsx";
 
 import CrearLapso from "./pages/Lapsos/CrearLapso.jsx";
@@ -22,7 +22,7 @@ function App() {
       {/* PARA ACCEDER DEBE DE EXISTIR UN UNSUARIO LOGUEADO */}
       <Route element={<RedirectLogin />}> 
         <Route path="/panel" element={<Panel />} />
-        <Route path="crear-recordatorio" element={<CrearNotificacion />} />
+        <Route path="crear-recordatorio" element={<CrearRecordatorio />} />
         <Route path="editarNotificacion" element={<EditarNotificacion />} />
 
         <Route path="crear-lapso" element={<CrearLapso />} />

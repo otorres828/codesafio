@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Input, Button, Typography } from "@material-tailwind/react";
 import Logo from "../../components/Logo";
-function CrearNotificacion() {
+function CrearRecordatorio() {
 
   const [titulo,setTitulo]=useState('');
   const [subtitulo,setiSubtulo]=useState('');
@@ -17,7 +17,7 @@ function CrearNotificacion() {
       <div className="bg-gray-100 min-h-screen relative flex flex-col justify-center items-center">
         <div className="mx-auto container relative">
           <Typography variant="h5" color="blue-gray" className="mb-2">
-            Crear Notificación
+            Crear Recordatorio
           </Typography>
 
           <Card>
@@ -69,4 +69,4 @@ function CrearNotificacion() {
   );
 }
 
-export default CrearNotificacion;
+export default CrearRecordatorio;
