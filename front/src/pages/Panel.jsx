@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import Dropdown from "../components/Dropdown";
 import Recordatorio from "../components/Recordatorio";
 import Logo from "../components/Logo";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import Lapso from "../components/Lapso";
+import { Button } from "@material-tailwind/react";
+import { NavLink } from "react-router-dom";
+import Notificacion from "../components/Notificacion";
+
 
 function Panel() {
   const options = ["Notificaciones", "Lapsos"];
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Notificacion");
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -25,15 +22,18 @@ function Panel() {
         <Logo />
         <div className="container mx-auto mt-4">
           <Dropdown options={options} onSelect={handleOptionSelect} />
-          <p className="mt-2">Has seleccionado: {selectedOption}</p>
         </div>
-        <div className="mx-auto container mt-4">
-        <Recordatorio
-        title="Título del recordatorio"
-        subtitle="Subtítulo del recordatorio"
-        text="Este es el texto del recordatorio. Puedes personalizarlo aquí."
-        days="3 días"
-        />
+        <div className="mx-auto container">
+          {selectedOption==='Notificaciones' ?
+            <Notificacion />
+          :
+          <Lapso />
+        }
+        <NavLink to={selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}>
+          <Button>
+          {selectedOption==='Notificaciones' ? 'crear-notificacion':'crear-lapso'}
+          </Button>
+        </NavLink>
         </div>
       </div>
     </>

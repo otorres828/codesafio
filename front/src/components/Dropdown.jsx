@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Dropdown = ({ options, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(1);
 
   const handleOptionSelect = (event) => {
     const option = event.target.value;
@@ -16,7 +16,6 @@ const Dropdown = ({ options, onSelect }) => {
         value={selectedOption}
         onChange={handleOptionSelect}
       >
-        <option value="">Seleccionar</option>
         {options.map((option, index) => (
           <option key={index} value={option}>
             {option}

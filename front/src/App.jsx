@@ -18,7 +18,7 @@ function App() {
       <Route path="panel" element={<Panel />} />
 
       {/* RUTAS DE ERRORES */}
-      <Route path="*" element={<Navigate to="/panel" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }
