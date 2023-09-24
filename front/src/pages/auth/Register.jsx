@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import { useSnackbar } from 'notistack';
 import login from './../../images/lago.webp';
@@ -66,12 +66,12 @@ export function Register() {
               </Typography>
             </CardHeader>
             <CardBody className="flex flex-col gap-4">
-              <Input type="text" label="Nick" size="lg" 
+              <Input type="text" label="Nick" size="lg" className="text-gray-400"
                           ref={nickRef}
                           onChange={e => setNick(e.target.value)}
                           value={nick}
                           autoComplete="off"/>
-              <Input type="password" label="Password" size="lg"  id="password"
+              <Input type="password" label="Password" size="lg"  className="text-gray-400"
                           onChange={e => setPassword(e.target.value)}
                           value={password}
                           autoComplete="off"
@@ -82,6 +82,12 @@ export function Register() {
               <Button variant="gradient" type="submit" fullWidth>
               Registrarse
               </Button>
+              <NavLink to={`/login`}>
+                <Typography  className="mt-3 text-gray-400
+                text-right">
+                  Ya tengo cuenta
+                </Typography>
+              </NavLink>
             </CardFooter>
           </div>
         </form>
