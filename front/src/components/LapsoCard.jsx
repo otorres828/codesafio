@@ -7,7 +7,7 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 function LapsoCard({ lapso }) {
   return (
     <Card>
-      <CardBody className="flex">
+      <CardBody className="flex items-center">
         {/* Columna 1: Título */}
         <div className="mr-4 flex items-center">
           <FontAwesomeIcon

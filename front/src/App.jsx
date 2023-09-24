@@ -7,6 +7,8 @@ import EditarNotificacion from "./pages/Notificaciones/EditarNotificacion.jsx";
 
 import CrearLapso from "./pages/Lapsos/CrearLapso.jsx";
 import EditarLapso from "./pages/Lapsos/EditarLapso.jsx";
+import Materias from "./pages/Materias/Materias.jsx";
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
 
         <Route path="crearLapso" element={<CrearLapso />} />
         <Route path="editarLapso" element={<EditarLapso />} />
+
+        <Route path="lapso/:id" element={<Materias /> } />
       </Route>
 
       {/* RUTAS DE ERRORES */}

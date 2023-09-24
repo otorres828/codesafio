@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LapsoCard from "../../components/LapsoCard";
 import axios from "../../api/axios";
-import { NavLink } from "react-router-dom";
 import {
   Dialog,
   DialogActions,
@@ -9,12 +8,9 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-function Lapso() {
-  const [lapsos, setLapsos] = useState(null);
-  const [lapso, setLapso] = useState(null);
+function Materias(props) {
   const token_codesafio = localStorage.getItem("token_codesafio");
-  const [nombre, setNombre] = useState("");
-  const [lapso_id, setLapso_id] = useState("");
+  const { id } = props.match.params;
 
   const headers = {
     Accept: "application/json",
@@ -36,7 +32,7 @@ function Lapso() {
     // .then((response) => {
     //   obtener_lapsos()
     // });
-    // navigate('./editar/lapso/',lapso_id)
+    // navigate('./editar/Materia/',lapso_id)
   }
 
   function actualizar() {
@@ -53,11 +49,11 @@ function Lapso() {
 
   return (
     <>
-      {/* <NavLink to={`/lapso/${lapso_id}`}> */}
-        <LapsoCard lapso="Semestre I" />
-      {/* </NavLink> */}
+      <LapsoCard
+        Materia="Semestre I"
+      />
     </>
   );
 }
 
-export default Lapso;
+export default Materias;
