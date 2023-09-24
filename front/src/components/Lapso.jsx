@@ -30,6 +30,7 @@ function Lapso() {
     // .then((response) => {
     //   obtener_lapsos()
     // });
+    navigate('./editar/lapso/',lapso_id)
   }
 
   function actualizar(){

@@ -5,7 +5,7 @@ const db = require('./../config/config');
 const crear_lapsos = (req, res) => {
     const { nombre_lapso } = req.body;
     
-    console.log(usuario_id(req));
+    const usuario_id=usuario_id(req);
 
     // Verifica si el campo "nombre_lapso" está presente en la solicitud
     if (!nombre_lapso) {
