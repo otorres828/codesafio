@@ -20,7 +20,6 @@ function Panel() {
     <>
       <div className="bg-gray-100 min-h-screen">
         <Logo />
-        {process.env.REACT_APP_API_URL}
         <div className="container mx-auto mt-4">
           <Dropdown options={options} onSelect={handleOptionSelect} />
         </div>
