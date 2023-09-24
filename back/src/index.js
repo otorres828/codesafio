@@ -9,6 +9,7 @@ let server = http.createServer(app);
 
 const routerAutenticacion = require("./routes/autenticacion.routes.js");
 const routerLapsos = require("./routes/lapsos.routes.js");
+const routerMaterias = require("./routes/materias.routes.js");
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -17,6 +18,7 @@ app.use(express.json());
 /*------------------------RUTAS---------------------- */
 app.use(routerAutenticacion);
 app.use(routerLapsos);
+app.use(routerMaterias);
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
