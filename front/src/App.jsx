@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { RedirectLogin, RedirectPanel } from "./components/ProtectedRoute.jsx";
-import { Login } from "./pages/auth";
+import { Login,Register } from "./pages/auth";
 import  Panel  from "./pages/Panel";
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
     <Routes>
         {/* REDIRIGE AL  SI HAY UN USUARIO LOGUEADO */}
       <Route element={<RedirectPanel/>}>
-          <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login />} />
+        <Route path="registrarse" element={<Register />} />
       </Route>
               
       {/* PARA ACCEDER DEBE DE EXISTIR UN UNSUARIO LOGUEADO */}
