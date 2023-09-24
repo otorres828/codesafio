@@ -14,8 +14,8 @@ function App() {
               
       {/* PARA ACCEDER DEBE DE EXISTIR UN UNSUARIO LOGUEADO */}
       <Route element={<RedirectLogin />}> 
+        <Route path="panel" element={<Panel />} />
       </Route>
-      <Route path="panel" element={<Panel />} />
 
       {/* RUTAS DE ERRORES */}
       <Route path="*" element={<Navigate to="/login" replace />} />
