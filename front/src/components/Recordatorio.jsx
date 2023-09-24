@@ -4,7 +4,8 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
-function Recordatorio({ titulo, materia, fecha, dias }) {
+function Recordatorio({ titulo, materia, fecha }) {
+
   return (
     <Card>
       <CardBody className="flex">
@@ -35,7 +36,7 @@ function Recordatorio({ titulo, materia, fecha, dias }) {
         <div className="w-1/2 flex justify-end items-center">
           <div className="text-right">
             <Typography variant="h5" className="px-3">
-              {dias}
+             5
             </Typography>
           </div>
         </div>

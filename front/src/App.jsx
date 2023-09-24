@@ -19,11 +19,11 @@ function App() {
               
       {/* PARA ACCEDER DEBE DE EXISTIR UN UNSUARIO LOGUEADO */}
       <Route element={<RedirectLogin />}> 
-        <Route path="panel" element={<Panel />} />
-        <Route path="crearNotificacion" element={<CrearNotificacion />} />
+        <Route path="/panel" element={<Panel />} />
+        <Route path="crear-recordatorio" element={<CrearNotificacion />} />
         <Route path="editarNotificacion" element={<EditarNotificacion />} />
 
-        <Route path="crearLapso" element={<CrearLapso />} />
+        <Route path="crear-lapso" element={<CrearLapso />} />
         <Route path="editarLapso" element={<EditarLapso />} />
       </Route>
 

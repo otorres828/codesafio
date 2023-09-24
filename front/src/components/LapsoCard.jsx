@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
-function LapsoCard({ lapso }) {
+function LapsoCard({ nombre_lapso }) {
+
   return (
-    <Card>
+    <Card className="mb-3">
       <CardBody className="flex">
         {/* Columna 1: Título */}
         <div className="mr-4 flex items-center">
@@ -18,10 +19,10 @@ function LapsoCard({ lapso }) {
           />
         </div>
         {/* Columna 2: Subtítulo dividido en 3 filas, alineado a la izquierda */}
-        <div className="w-1/2 flex items-start items-center">
+        <div className="w-1/2 flex items-start ">
           <div className="flex flex-col">
             <Typography variant="h6" className="flex text-left">
-              {lapso}
+              {nombre_lapso}
             </Typography>
           </div>
         </div>

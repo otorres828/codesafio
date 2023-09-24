@@ -9,7 +9,7 @@ const crear_lapsos = (req, res) => {
   // Verifica si el campo "nombre_lapso" está presente en la solicitud
   if (!nombre_lapso) {
     return res
-      .status(400)
+      .status(200)
       .json({ error: 'El campo "nombre_lapso" es requerido' });
   }
 
@@ -18,7 +18,6 @@ const crear_lapsos = (req, res) => {
 
   db.run(sql, [nombre_lapso, usuario_id], function (err) {
     if (err) {
-      console.error("Error al insertar el lapso:", err.message);
       return res.status(200).json({ error: "Error interno del servidor" });
     }
 

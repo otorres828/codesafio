@@ -3,7 +3,7 @@ import axios from '../../api/axios';
 import Recordatorio from '../../components/Recordatorio'
 
 function Notificacion() {
-    const [notificaciones,setNotificaciones]=useState(null)
+    const [recordatorios,setRecordatorios]=useState(null)
     const token_codesafio = localStorage.getItem("token_codesafio");
 
     const headers ={
@@ -11,21 +11,29 @@ function Notificacion() {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token_codesafio}`
     }
+
+    const obtener_notificaciones=()=>{
+        axios.get('recordatorios/obtener_record',{headers:headers})
+         .then((response)=>{
+            setRecordatorios(response.data.recordatorios)
+        })
+    }
+
     useEffect(()=>{
-        //  axios.get('obtener_notificacion',{headers:headers})
-        //  .then((response)=>{
-        //     setNotificaciones(response.data)
-        //  })
+        obtener_notificaciones();
     },[])
     
   return (
     <>
-        <Recordatorio
-            titulo="Título del recordatorio"
-            materia="Matematicas"
-            fecha="25/01/2024"
-            dias="3 dias"
+        {recordatorios && recordatorios.map((recordatorio, index) => (
+          <Recordatorio
+            key={index}
+            titulo={recordatorio.titulo}
+            materia={recordatorio.materia}
+            fecha={recordatorio.fecha}
           />
+        ))}
+
     </>
   )
 }

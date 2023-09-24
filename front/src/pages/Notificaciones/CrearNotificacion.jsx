@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Input, Button, Typography } from "@material-tailwind/react";
 import Logo from "../../components/Logo";
 function CrearNotificacion() {
+
+  const [titulo,setTitulo]=useState('');
+  const [subtitulo,setiSubtulo]=useState('');
+  const [fecha,setFecha]=useState('');
+  
   return (
     <>
       <div className="bg-gray-100 min-h-screen relative">
         <Logo />
         <div className="mx-auto container relative">
           <Typography variant="h5" color="blue-gray" className="mb-2">
-            Crear Notificación
+            Crear Recordatorio
           </Typography>
 
           <Card>

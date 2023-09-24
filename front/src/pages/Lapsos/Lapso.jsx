@@ -10,10 +10,7 @@ import {
 
 function Lapso() {
   const [lapsos, setLapsos] = useState(null);
-  const [lapso, setLapso] = useState(null);
   const token_codesafio = localStorage.getItem("token_codesafio");
-  const [nombre, setNombre] = useState("");
-  const [lapso_id, setLapso_id] = useState("");
 
   const headers = {
     Accept: "application/json",
@@ -22,39 +19,26 @@ function Lapso() {
   };
 
   function obtener_lapsos() {
-    // axios
-    //   .get("lapsos/obtener", { headers: headers})
-    //   .then((response) => {
-    //     setLapsos(response.data);
-    //   });
-  }
-
-  function agregar_lapso() {
-    // axios
-    // .post("lapsos/actualizar",{nombre}, { headers: headers})
-    // .then((response) => {
-    //   obtener_lapsos()
-    // });
-    // navigate('./editar/lapso/',lapso_id)
-  }
-
-  function actualizar() {
     axios
-      .post("lapsos/actualizar/" + lapso_id, { nombre }, { headers: headers })
+      .get("lapsos/obtener_lapsos", { headers: headers})
       .then((response) => {
-        obtener_lapsos();
+        setLapsos(response.data.lapsos);
       });
   }
 
   useEffect(() => {
-    // obtener_lapsos();
+    obtener_lapsos();
   }, []);
 
   return (
     <>
-      <LapsoCard
-        lapso="Semestre I"
-      />
+      {lapsos &&
+        lapsos.map((lapso, index) => (
+        <LapsoCard
+          key={index}
+          nombre_lapso={lapso.nombre_lapso}
+        />
+      ))}
     </>
   );
 }
