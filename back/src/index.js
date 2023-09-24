@@ -7,14 +7,14 @@ let app = express();
 let server = http.createServer(app); 
 
 
-const routerMaterias = require('./routes/materias.routes.js')
+const routerUsers = require('./routes/users.routes.js')
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 /*------------------------RUTAS---------------------- */
-app.use(routerMaterias);
+app.use(routerUsers);
 
 /*------------------------FIN RUTAS---------------------- */
 
