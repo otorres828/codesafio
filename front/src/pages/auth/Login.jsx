@@ -28,14 +28,7 @@ export function Login() {
   const enviarFormularioLogin = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "login",
-        {
-          nick: nick,
-          clave: password
-        },
-        { headers: cabecera }
-      );
+      const res = await axios.post("login",{nick,clave: password},{ headers: cabecera });
     
       if (res.data.error) {;
         enqueueSnackbar(res.data.error, { variant: res.data.error });
