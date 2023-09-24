@@ -23,16 +23,16 @@ db.serialize(() => {
     db.run('CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(255), clave VARCHAR(255))');    
 
     // Crear la tabla "semestres" para los semestres
-    db.run('CREATE TABLE IF NOT EXISTS lapsos (lapso_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre_lapso VARCHAR(255))');
+    db.run('CREATE TABLE IF NOT EXISTS lapsos (lapso_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre_lapso VARCHAR(255), usuario_id INTEGER, FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id))');
 
     // Crear la tabla "materias" para las materias
-    db.run('CREATE TABLE IF NOT EXISTS materias (materia_id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR(255), subtitulo VARCHAR(255), icono TEXT, fecha_hora DATETIME, lapso_id INTEGER, FOREIGN KEY (lapso_id) REFERENCES lapsos(lapso_id))');
+    db.run('CREATE TABLE IF NOT EXISTS materias (materia_id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR(255), subtitulo VARCHAR(255), icono TEXT, fecha_hora DATETIME, lapso_id INTEGER, FOREIGN KEY (lapso_id) REFERENCES lapsos(lapso_id), usuario_id INTEGER, FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id))');
 
     // Crear la tabla "recordatorios" para los recordatorios
-    db.run('CREATE TABLE IF NOT EXISTS recordatorios (record_id INTEGER PRIMARY KEY AUTOINCREMENT, materia_id INTEGER, fecha_hora DATETIME, FOREIGN KEY (materia_id) REFERENCES materias(materia_id))');
+    db.run('CREATE TABLE IF NOT EXISTS recordatorios (record_id INTEGER PRIMARY KEY AUTOINCREMENT, materia_id INTEGER, fecha_hora DATETIME, FOREIGN KEY (materia_id) REFERENCES materias(materia_id), usuario_id INTEGER, FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id))');
 
     // Crear la tabla "notas" para las notas
-    db.run('CREATE TABLE IF NOT EXISTS notas (notas_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre_examen VARCHAR(255), nota_obtenida REAL, porcentaje_evaluacion REAL, materia_id INTEGER, FOREIGN KEY (materia_id) REFERENCES materias(materia_id))');
+    db.run('CREATE TABLE IF NOT EXISTS notas (notas_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre_examen VARCHAR(255), nota_obtenida REAL, porcentaje_evaluacion REAL, materia_id INTEGER, FOREIGN KEY (materia_id) REFERENCES materias(materia_id), usuario_id INTEGER, FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id))');
 
 });
 

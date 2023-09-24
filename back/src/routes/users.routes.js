@@ -4,8 +4,8 @@ const { ver_users } = require('../controllers/UsersController.js');
 
 const routerUsers = express.Router();
 
-routerUsers.get('/create_users',create_users); 
+routerUsers.get('/create_users',create_users, verify); 
 
-routerUsers.get('/users',ver_users); 
+routerUsers.get('/users',ver_users, verify); 
 
 module.exports = routerUsers;
