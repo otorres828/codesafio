@@ -43,9 +43,7 @@ db.serialize(() => {
     `CREATE TABLE IF NOT EXISTS materias (
         materia_id INTEGER PRIMARY KEY AUTOINCREMENT, 
         titulo VARCHAR(255),
-        subtitulo VARCHAR(255), 
         icono TEXT, 
-        fecha_hora DATETIME, 
         lapso_id INTEGER,
         usuario_id INTEGER,
         FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON UPDATE CASCADE ON DELETE CASCADE,

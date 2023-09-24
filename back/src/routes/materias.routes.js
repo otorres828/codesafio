@@ -4,8 +4,8 @@ const verify = require('./../middleware/verify.js')
 const routerMaterias = express.Router();
 
 // Ruta para crear una nueva materia
-routerMaterias.post('/crear_materias', verify.verify, crear_materia);
-routerMaterias.get('/obtener_materias', verify.verify, obtener_materia);
+routerMaterias.post('/crear_materias/:lapso_id', verify.verify, crear_materia);
+routerMaterias.get('/obtener_materias/:lapso_id', verify.verify, obtener_materia);
 routerMaterias.delete('/borrar_materia/:materia_id', verify.verify, borrar_materia);
 routerMaterias.put('/actualizar_materia/:materia_id', verify.verify, actualizar_materia);
 

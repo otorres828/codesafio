@@ -3,45 +3,53 @@ const usuario_id_middleware = require("../middleware/Usuario_id");
 
 // Controlador para crear una nueva materia
 const crear_materia = (req, res) => {
-  const { titulo, subtitulo, icono, fecha_hora, lapso_id } = req.body;
-
-  // console.log(req.body)
-
-  const usuario_id = usuario_id_middleware(req);
-
-  // Verifica si todos los campos requeridos están presentes
-  if (!titulo || !subtitulo || !icono || !fecha_hora || !lapso_id) {
-    console.log(req.body);
-
-    return res.status(400).json({ error: "Todos los campos son requeridos" });
-  }
-
-  // Consulta SQL para insertar la nueva materia
-  const sql =
-    "INSERT INTO materias (titulo, subtitulo, icono, fecha_hora, lapso_id, usuario_id) VALUES (?, ?, ?, ?, ?, ?)";
-
-  db.run(
-    sql,
-    [titulo, subtitulo, icono, fecha_hora, lapso_id, usuario_id],
-    function (err) {
-      if (err) {
-        console.error("Error al insertar la materia:", err.message);
-        return res.status(500).json({ error: "Error interno del servidor" });
-      }
-
-      // Devuelve el ID de la materia recién insertada
-      res
-        .status(201)
-        .json({ id: this.lastID, mensaje: "Materia creada con éxito" });
+    const { titulo, icono } = req.body;
+    const lapso_id = req.params.lapso_id;
+  
+    const usuario_id = usuario_id_middleware(req);
+  
+    // Verifica si todos los campos requeridos están presentes
+    if (!titulo) {
+      return res.status(400).json({ error: "El titulo es requerido" });
     }
-  );
-};
+  
+    // Asigna un valor predeterminado a "icono" si no está presente en la solicitud
+    let iconoPredeterminado = '../public/img/21.png';
+    const iconoFinal = icono || iconoPredeterminado;
+  
+    // Consulta SQL para insertar la nueva materia
+    const sql =
+      "INSERT INTO materias (titulo, icono, lapso_id, usuario_id) VALUES (?, ?, ?, ?)";
+  
+    db.run(
+      sql,
+      [titulo, iconoFinal, lapso_id, usuario_id],
+      function (err) {
+        if (err) {
+          console.error("Error al insertar la materia:", err.message);
+          return res.status(500).json({ error: "Error interno del servidor" });
+        }
+  
+        // Devuelve el ID de la materia recién insertada
+        res
+          .status(201)
+          .json({ id: this.lastID, mensaje: "Materia creada con éxito" });
+      }
+    );
+  };
+  
 
 const obtener_materia = (req, res) => {
-  // Consulta SQL para obtener todos los lapsos
-  const sql = "SELECT * FROM materias";
+  // Consulta SQL para obtener todos las materias
+  const user_id = usuario_id_middleware(req);
+  const lapso_id = req.params.lapso_id;
+  const sql = `SELECT * 
+                FROM materias
+                WHERE usuario_id = ${user_id}
+                AND lapso_id = ${lapso_id}
+                ORDER BY materia_id DESC`;
 
-  db.all(sql, [], (err, rows) => {
+  db.all(sql, (err, rows) => {
     if (err) {
       console.error("Error al obtener las materias:", err.message);
       return res.status(500).json({ error: "Error interno del servidor" });
@@ -75,20 +83,16 @@ const borrar_materia = (req, res) => {
 const actualizar_materia = (req, res) => {
     const materia_id = req.params.materia_id;
     const usuario_id = usuario_id_middleware(req);
-    const { titulo, subtitulo, icono, fecha_hora, lapso_id } = req.body;
+    const { titulo, icono } = req.body;
   
     // Consulta SQL para actualizar el lapso
     const sql =
       `UPDATE materias SET 
       titulo = ?, 
-      subtitulo = ?,  
-      icono = ?, 
-      fecha_hora = ?, 
-      lapso_id=? 
-      
+      icono = ?
       WHERE materia_id = ? AND usuario_id = ?`;
   
-    db.run(sql, [titulo, subtitulo, icono, fecha_hora, lapso_id, materia_id, usuario_id], function (err) {
+    db.run(sql, [titulo, icono, materia_id, usuario_id], function (err) {
       if (err) {
         console.error("Error al actualizar el lapso:", err.message);
         return res.status(500).json({ error: "Error interno del servidor" });
