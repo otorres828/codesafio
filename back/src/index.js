@@ -18,7 +18,7 @@ app.use(routerAutenticacion);
 /*------------------------FIN RUTAS---------------------- */
 
 db.serialize(() => {
-    db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, nickname VARCHAR(255), password VARCHAR(255))');    
+    db.run('CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nick VARCHAR(255), clave VARCHAR(255))');    
 });
 
 // INICIAR SERVIDOR
