@@ -90,4 +90,10 @@ app.get("/", (req, res) => {
   res.send(ipAddress);
 });
 
-module.exports = app; // Cambiado de io a app
+const { enviarNotificaciones } = require('./notificacionespush/notificaciones.js'); // Ajusta la ruta según la ubicación real de tu archivo
+
+// Llama a la función para enviar notificaciones
+enviarNotificaciones();
+
+
+
