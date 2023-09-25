@@ -39,7 +39,7 @@ const obtener_record = (req, res) => {
   const sql = `SELECT * 
   FROM recordatorios
   WHERE usuario_id = ${user_id}
-  ORDER BY fecha_hora DESC;
+  ORDER BY fecha_hora ASC;
   `;
 
   db.all(sql, (err, rows) => {
