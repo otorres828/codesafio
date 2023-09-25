@@ -59,6 +59,7 @@ function Panel() {
         <div className="mx-auto container relative">
           {value == 1 ? <Notificacion /> : <Lapso />}
           <div className="fixed right-0 bottom-0 mt-4 mx-6 mb-6">
+            
             <NavLink
               to={
                 value == 1

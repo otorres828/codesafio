@@ -3,16 +3,12 @@ const usuario_id_middleware = require("../middleware/Usuario_id");
 
 // Controlador para crear una nueva materia
 const crear_record = (req, res) => {
-    const { nombre_examen, nota_obtenida, porcentaje_evaluacion } = req.body;
+    const { titulo, subtitulo, fecha } = req.body;
 
-  
-
-    console.log(req.body)
-  
     const usuario_id = usuario_id_middleware(req);
   
     // Verifica si todos los campos requeridos están presentes
-    if (!titulo || !fecha_hora) {
+    if (!titulo || !fecha) {
       return res.status(400).json({ error: "El titulo y la fecha es requerido" });
     }
   
@@ -21,7 +17,7 @@ const crear_record = (req, res) => {
         titulo, subtitulo, fecha_hora, usuario_id) VALUES (?, ?, ?, ?)`;
     db.run(
       sql,
-      [titulo, subtitulo, fecha_hora, usuario_id],
+      [titulo, subtitulo, fecha, usuario_id],
       function (err) {
         if (err) {
           console.error("Error al insertar el recordatorio:", err.message);

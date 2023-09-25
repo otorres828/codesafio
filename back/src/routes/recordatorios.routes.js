@@ -4,7 +4,7 @@ const {verify} = require('./../middleware/verify.js')
 const routerRecordatorios = express.Router();
 
 // Ruta para crear una nueva materia
-routerRecordatorios.post('/crear_record', verify, crear_record);
+routerRecordatorios.post('/recordatorios/crear', verify, crear_record);
 routerRecordatorios.get('/recordatorios/obtener_record', verify, obtener_record);
 routerRecordatorios.delete('/borrar_record/:record_id', verify, borrar_record);
 routerRecordatorios.put('/actualizar_record/:record_id',verify, actualizar_record);

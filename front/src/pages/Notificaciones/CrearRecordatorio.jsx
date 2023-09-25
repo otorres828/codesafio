@@ -1,15 +1,41 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Input, Button, Typography } from "@material-tailwind/react";
 import Logo from "../../components/Logo";
-function CrearRecordatorio() {
+import axios from "../../api/axios";
+import { useSnackbar } from "notistack";
 
+function CrearRecordatorio() {
+  const { enqueueSnackbar } = useSnackbar();
   const [titulo,setTitulo]=useState('');
-  const [subtitulo,setiSubtulo]=useState('');
+  const [subtitulo,setSubtitulo]=useState('');
   const [fecha,setFecha]=useState('');
-  
+  const token_codesafio = localStorage.getItem("token_codesafio");
+
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token_codesafio}`,
+  };
+
+  const crear_recordatorio=()=>{
+    axios.post('recordatorios/crear',{titulo,subtitulo,fecha},{headers:headers}).
+    then((response)=>{
+      if(response.data.mensaje){
+        enqueueSnackbar("Recordatorio creado con exito", { variant: "success" });
+        setTitulo('')
+        setSubtitulo('')
+        setFecha('')
+        Navigate("../panel");
+      }else{
+        enqueueSnackbar(response.data.error, { variant: "error" });
+      }
+
+    })
+  }
+
   return (
     <>
     <div className="bg-gray-100 min-h-screen" >
@@ -24,6 +50,7 @@ function CrearRecordatorio() {
             <CardBody>
               <div className="mb-4">
                 <Input
+                  onChange={(e)=>{setTitulo(e.target.value)}}
                   type="text"
                   id="titulo"
                   label="Título"
@@ -34,6 +61,7 @@ function CrearRecordatorio() {
               </div>
               <div className="mb-4">
                 <Input
+                  onChange={(e)=>{setSubtitulo(e.target.value)}}
                   type="text"
                   id="subtitulo"
                   label="Subtítulo"
@@ -44,7 +72,8 @@ function CrearRecordatorio() {
               </div>
               <div className="mb-4">
                 <Input
-                  type="date"
+                  onChange={(e)=>{setFecha(e.target.value)}}
+                  type="datetime-local"
                   id="fecha"
                   label="Fecha"
                   color="teal"
@@ -58,9 +87,7 @@ function CrearRecordatorio() {
           <NavLink to="/panel">
           <Button color="red"><FontAwesomeIcon icon={faArrowLeft} /></Button>
           </NavLink>
-            <NavLink to="/crearNotificacion">
-              <Button color="teal"><FontAwesomeIcon icon={faCheck} /></Button>
-            </NavLink>
+          <Button color="teal" onClick={()=>{crear_recordatorio()}}><FontAwesomeIcon icon={faCheck} /></Button>
           </div>
         </div>
       </div>
