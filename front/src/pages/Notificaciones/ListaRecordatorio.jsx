@@ -16,7 +16,6 @@ function ListaRecordatorio() {
         axios.get('recordatorios/obtener_record',{headers:headers})
          .then((response)=>{
             setRecordatorios(response.data.recordatorios)
-            console.log(response.data.recordatorios)
         })
     }
 
