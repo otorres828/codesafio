@@ -27,7 +27,7 @@ const crear_materia = (req, res) => {
       function (err) {
         if (err) {
           console.error("Error al insertar la materia:", err.message);
-          return res.status(500).json({ error: "Error interno del servidor" });
+          return res.status(200).json({ error: "Error interno del servidor" });
         }
   
         // Devuelve el ID de la materia recién insertada
@@ -59,12 +59,12 @@ const obtener_materia = (req, res) => {
   db.all(sql, (err, rows) => {
     if (err) {
       console.error("Error al obtener las materias:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }else{
       db.all(sql2, (err, rows2) => {
         if (err) {
           console.error("Error al obtener las materias:", err.message);
-          return res.status(500).json({ error: "Error interno del servidor" });
+          return res.status(200).json({ error: "Error interno del servidor" });
         }else{
           // Devolver las materias como respuesta
         res.status(200).json({ materias: rows, acumulado: rows2 });
@@ -83,7 +83,7 @@ const borrar_materia = (req, res) => {
   db.run(sql, [materia_id], function (err) {
     if (err) {
       console.error("Error al borrar la materia:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devuelve el ID del lapso recién borrado
@@ -109,7 +109,7 @@ const actualizar_materia = (req, res) => {
     db.run(sql, [titulo, icono, materia_id, usuario_id], function (err) {
       if (err) {
         console.error("Error al actualizar el lapso:", err.message);
-        return res.status(500).json({ error: "Error interno del servidor" });
+        return res.status(200).json({ error: "Error interno del servidor" });
       }
   
       // Devuelve el ID del lapso recién actualizado

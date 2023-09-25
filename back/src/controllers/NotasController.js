@@ -20,7 +20,7 @@ const crear_notas = (req, res) => {
       function (err) {
         if (err) {
           console.error("Error al insertar la nota:", err.message);
-          return res.status(500).json({ error: "Error interno del servidor" });
+          return res.status(200).json({ error: "Error interno del servidor" });
         }
   
         // Devuelve el ID de la nota recién insertada
@@ -41,7 +41,7 @@ const obtener_notas = (req, res) => {
   db.all(sql, (err, rows) => {
     if (err) {
       console.error("Error al obtener las notas:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
     res.status(200).json({ notas: rows });
   });
@@ -55,7 +55,7 @@ const borrar_notas = (req, res) => {
   db.run(sql, [notas_id], function (err) {
     if (err) {
       console.error("Error al borrar la nota:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devuelve el ID del Nota recién borrado
@@ -81,7 +81,7 @@ const actualizar_notas = (req, res) => {
     db.run(sql, [nombre_examen, nota_obtenida, porcentaje_evaluacion, notas_id, usuario_id], function (err) {
       if (err) {
         console.error("Error al actualizar la nota:", err.message);
-        return res.status(500).json({ error: "Error interno del servidor" });
+        return res.status(200).json({ error: "Error interno del servidor" });
       }
   
       // Devuelve el ID del lapso recién actualizado

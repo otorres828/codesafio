@@ -35,7 +35,7 @@ const login = async (req, res) => {
    
     } catch (error) {
         console.error("Error al autenticar usuario:", error);
-        res.status(500).json({ error: "Error interno del servidor" });
+        res.status(200).json({ error: "Error interno del servidor" });
     }
 };
 
@@ -61,14 +61,14 @@ const register = async (req, res) => {
   
         db.run(sql, [nick, hashedPassword], async function(err) {
           if (err) {
-            return res.sendStatus(500);
+            return res.sendStatus(200);
           }
           
           res.json({ message: 'Registro exitoso' });
         });
     } catch (error) {
         console.error("Error al registrar usuario");
-        res.status(500).json({ error: "Error interno del servidor" });
+        res.status(200).json({ error: "Error interno del servidor" });
     }
 };
 
