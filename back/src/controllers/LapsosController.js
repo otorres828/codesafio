@@ -32,7 +32,7 @@ const obtener_lapsos = (req, res) => {
   db.all(sql, [], (err, rows) => {
     if (err) {
       console.error("Error al obtener los lapsos:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devolver los lapsos como respuesta
@@ -49,7 +49,7 @@ const borrar_lapso = (req, res) => {
   db.run(sql, [lapso_id], function (err) {
     if (err) {
       console.error("Error al borrar el lapso:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devuelve el ID del lapso recién borrado
@@ -72,7 +72,7 @@ const actualizar_lapso = (req, res) => {
   db.run(sql, [nombre_lapso, lapso_id, usuario_id], function (err) {
     if (err) {
       console.error("Error al actualizar el lapso:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devuelve el ID del lapso recién actualizado

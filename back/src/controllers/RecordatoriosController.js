@@ -21,7 +21,7 @@ const crear_record = (req, res) => {
       function (err) {
         if (err) {
           console.error("Error al insertar el recordatorio:", err.message);
-          return res.status(500).json({ error: "Error interno del servidor" });
+          return res.status(200).json({ error: "Error interno del servidor" });
         }
   
         res
@@ -46,7 +46,7 @@ const obtener_record = (req, res) => {
   db.all(sql, (err, rows) => {
     if (err) {
       console.error("Error al obtener las materias:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     res.status(200).json({ recordatorios: rows });
@@ -63,7 +63,7 @@ const borrar_record = (req, res) => {
   db.run(sql, [record_id], function (err) {
     if (err) {
       console.error("Error al borrar el recordatorio:", err.message);
-      return res.status(500).json({ error: "Error interno del servidor" });
+      return res.status(200).json({ error: "Error interno del servidor" });
     }
 
     // Devuelve el ID del recordatorio recién borrado
@@ -90,7 +90,7 @@ const actualizar_record = (req, res) => {
     db.run(sql, [titulo, subtitulo, fecha_hora, record_id, usuario_id], function (err) {
       if (err) {
         console.error("Error al actualizar el recordatorio:", err.message);
-        return res.status(500).json({ error: "Error interno del servidor" });
+        return res.status(200).json({ error: "Error interno del servidor" });
       }
   
       // Devuelve el ID del lapso recién actualizado
