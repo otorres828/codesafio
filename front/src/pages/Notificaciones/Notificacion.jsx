@@ -30,7 +30,7 @@ function Notificacion() {
             key={index}
             titulo={recordatorio.titulo}
             materia={recordatorio.materia}
-            fecha={recordatorio.fecha}
+            fecha_hora={recordatorio.fecha_hora}
           />
         ))}
 
