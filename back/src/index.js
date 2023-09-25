@@ -25,6 +25,25 @@ app.use(routerRecordatorios);
 app.use(routerNotas);
 /*------------------------FIN RUTAS---------------------- */
 
+
+/*------------------------SOCKETS------------------------ */
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "*",  // Allow all origins
+    methods: ["GET", "POST"]
+  }
+});
+// Adjuntar la instancia io a la aplicación Express
+app.io = io;
+io.on('connection', () => {
+  console.log("Conexion al socket exitosa");
+});
+/*-----------------------FIN SOCKETS------------------------- */
+
+/*-----------------------CRON------------------------- */
+// require('./notificacionespush/notificaciones')(io)
+/*-----------------------FIN CRON------------------------- */
+
 db.serialize(() => {
   db.run(
     `CREATE TABLE IF NOT EXISTS usuarios 
@@ -90,10 +109,6 @@ app.get("/", (req, res) => {
   res.send(ipAddress);
 });
 
-const { enviarNotificaciones } = require('./notificacionespush/notificaciones.js'); // Ajusta la ruta según la ubicación real de tu archivo
-
-// Llama a la función para enviar notificaciones
-enviarNotificaciones();
 
 
 

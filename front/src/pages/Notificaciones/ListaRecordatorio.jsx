@@ -28,9 +28,7 @@ function ListaRecordatorio() {
         {recordatorios && recordatorios.map((recordatorio, index) => (
           <TarjetaRecordatorio
             key={index}
-            titulo={recordatorio.titulo}
-            materia={recordatorio.materia}
-            fecha_hora={recordatorio.fecha_hora}
+            recordatorio={recordatorio}
           />
         ))}
 
