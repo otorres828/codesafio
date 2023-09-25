@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Card, CardBody, Input, Button, Typography } from "@material-tailwind/react";
@@ -9,6 +9,8 @@ import { useSnackbar } from "notistack";
 
 function CrearRecordatorio() {
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
   const [titulo,setTitulo]=useState('');
   const [subtitulo,setSubtitulo]=useState('');
   const [fecha,setFecha]=useState('');
@@ -28,7 +30,7 @@ function CrearRecordatorio() {
         setTitulo('')
         setSubtitulo('')
         setFecha('')
-        Navigate("../panel");
+        navigate("../panel");
       }else{
         enqueueSnackbar(response.data.error, { variant: "error" });
       }

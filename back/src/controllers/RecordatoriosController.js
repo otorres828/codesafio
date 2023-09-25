@@ -25,7 +25,7 @@ const crear_record = (req, res) => {
         }
   
         res
-          .status(201)
+          .status(200)
           .json({ id: this.lastID, mensaje: "Recordatorio creado con éxito" });
       }
     );

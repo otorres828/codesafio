@@ -7,7 +7,7 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 function Recordatorio({ titulo, materia, fecha }) {
 
   return (
-    <Card>
+    <Card className="mb-3">
       <CardBody className="flex">
         {/* Columna 1: Título */}
         <div className="mr-4 flex items-center">
