@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LapsoCard from "../../components/LapsoCard";
 import axios from "../../api/axios";
 
-function Lapso() {
+function ListaLapso() {
   const [lapsos, setLapsos] = useState(null);
   const token_codesafio = localStorage.getItem("token_codesafio");
 
@@ -37,4 +37,4 @@ function Lapso() {
   );
 }
 
-export default Lapso;
+export default ListaLapso;

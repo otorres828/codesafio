@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../../api/axios';
-import Recordatorio from '../../components/Recordatorio'
+import TarjetaRecordatorio from '../../components/TarjetaRecordatorio'
 
-function Recordatorio() {
+function ListaRecordatorio() {
     const [recordatorios,setRecordatorios]=useState(null)
     const token_codesafio = localStorage.getItem("token_codesafio");
 
@@ -16,6 +16,7 @@ function Recordatorio() {
         axios.get('recordatorios/obtener_record',{headers:headers})
          .then((response)=>{
             setRecordatorios(response.data.recordatorios)
+            console.log(response.data.recordatorios)
         })
     }
 
@@ -26,7 +27,7 @@ function Recordatorio() {
   return (
     <>
         {recordatorios && recordatorios.map((recordatorio, index) => (
-          <Recordatorio
+          <TarjetaRecordatorio
             key={index}
             titulo={recordatorio.titulo}
             materia={recordatorio.materia}
@@ -38,4 +39,4 @@ function Recordatorio() {
   )
 }
 
-export default Recordatorio
+export default ListaRecordatorio

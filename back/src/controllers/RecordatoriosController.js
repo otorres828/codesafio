@@ -36,7 +36,7 @@ const obtener_record = (req, res) => {
   // Consulta SQL para obtener todos los recordatorios
 
   const user_id = usuario_id_middleware(req);
-
+  console.log(user_id)
   const sql = `SELECT * 
   FROM recordatorios
   WHERE usuario_id = ${user_id}

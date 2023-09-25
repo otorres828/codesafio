@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Dropdown from "../components/Dropdown";
+import React, { useState } from "react";
 import Logo from "../components/Logo";
 import { Button } from "@material-tailwind/react";
 import { NavLink, useParams } from "react-router-dom";
-import Notificacion from "./Notificaciones/Recordatorio";
-import Lapso from "./Lapsos/Lapso";
+import ListaLapso from "./Lapsos/ListaLapso";
+import ListaRecordatorio from "./Notificaciones/ListaRecordatorio";
+
 import {
-  CardBody,
-  Avatar,
-  Typography,
   Tabs,
   TabsHeader,
   Tab,
@@ -16,7 +13,6 @@ import {
 import {
   HomeIcon,
   ChatBubbleLeftEllipsisIcon,
-  PencilIcon,
 } from "@heroicons/react/24/solid";
 function Panel() {
 
@@ -47,7 +43,7 @@ function Panel() {
               </div>
         </div>
         <div className="mx-auto container relative">
-          {value == 1 ? <Notificacion /> : <Lapso />}
+          {value == 1 ? <ListaRecordatorio /> : <ListaLapso />}
           <div className="fixed right-0 bottom-0 mt-4 mx-6 mb-6">
             
             <NavLink

@@ -4,7 +4,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
-function Recordatorio({ titulo, materia, fecha_hora }) {
+function TarjetaRecordatorio({ titulo, materia, fecha_hora }) {
   function formatoFecha(fecha) {
     const fechaObj = new Date(fecha);
     const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -64,4 +64,4 @@ function Recordatorio({ titulo, materia, fecha_hora }) {
   
 }
 
-export default Recordatorio;
+export default TarjetaRecordatorio;
