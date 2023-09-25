@@ -1,10 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 function TarjetaRecordatorio({ recordatorio}) {
+  const navigate = useNavigate();
+
   function formatoFecha(fecha) {
     const fechaObj = new Date(fecha);
     const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -31,7 +33,6 @@ function TarjetaRecordatorio({ recordatorio}) {
   }
 
   function editar(recordatorio){
-    return <Navigate to={'./crear-notificacion/'+recordatorio} />;
   }
 
   return (

@@ -22,7 +22,7 @@ function App() {
       {/* PARA ACCEDER DEBE DE EXISTIR UN UNSUARIO LOGUEADO */}
       <Route element={<RedirectLogin />}> 
         <Route path="/panel" element={<Panel />} />
-        <Route path="crear-recordatorio/:recordatorio?" element={<CrearRecordatorio />} />
+        <Route path="crear-recordatorio/:recordatorio" element={<CrearRecordatorio />} />
         <Route path="editarNotificacion" element={<EditarNotificacion />} />
 
         <Route path="crear-lapso" element={<CrearLapso />} />
