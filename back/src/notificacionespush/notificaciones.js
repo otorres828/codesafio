@@ -9,7 +9,7 @@ cron.schedule('0 0 * * *', () => {
 
   // Calcular la fecha límite para notificaciones (3 días antes)
   const deadlineDate = new Date();
-  deadlineDate.setDate(currentDate.getDate() - 3); // Resta 3 días
+  deadlineDate.setDate(currentDate.getDate() - 3); 
 
   // Consultar la base de datos para obtener los recordatorios
   db.all('SELECT * FROM recordatorios WHERE fecha_hora <= ? AND fecha_hora >= ?', [deadlineDate, currentDate], (err, rows) => {
@@ -29,7 +29,6 @@ cron.schedule('0 0 * * *', () => {
   });
 });
 
-// No se requiere cron.start(); en las versiones más recientes de node-cron
 
 module.exports = {
     enviarNotificaciones: () => {
