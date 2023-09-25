@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from '../../api/axios';
 import Recordatorio from '../../components/Recordatorio'
 
-function Notificacion() {
+function Recordatorio() {
     const [recordatorios,setRecordatorios]=useState(null)
     const token_codesafio = localStorage.getItem("token_codesafio");
 
@@ -38,4 +38,4 @@ function Notificacion() {
   )
 }
 
-export default Notificacion
+export default Recordatorio
